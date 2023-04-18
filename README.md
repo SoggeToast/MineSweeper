@@ -5,7 +5,7 @@ Original Creation Date: 4/18/2023
 
 Contributors: Miguel Canales(Original Creator), Mason Wendel
 
-<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 Mine Sweeper Game and Solver 
 
