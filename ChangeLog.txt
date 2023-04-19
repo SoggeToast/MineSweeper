@@ -4,6 +4,3 @@
 - 3:00 - I need to ask you how we want to create a method
          See line 34 in the Board class                            Mason 
 - 8:30 - Me trying to figure out how to use this                   Miguel
-Testing git pull
-git pull worked. Testing git push
-git push worked 
