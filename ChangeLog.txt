@@ -1,6 +1,7 @@
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Change Log <<<<>>>> Person to make change <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-- 2:30 - Created board class and the change log                    Mason 
-- 2:50 - Made changes to board class                               Mason 
+- 2:30 - Created board class and the change log                    Mason                     4/18/2023
+- 2:50 - Made changes to board class                               Mason                     4/18/2023
 - 3:00 - I need to ask you how we want to create a method
-         See line 34 in the Board class                            Mason 
-- 8:30 - Me trying to figure out how to use this                   Miguel
+         See line 34 in the Board class                            Mason                     4/18/2023
+- 8:30 - Me trying to figure out how to use this                   Miguel                    4/18/2023
+- 7:50 am - Trying to sort files better                            Mason                     4/19/2023
