@@ -6,3 +6,4 @@
 - 8:30 - Me trying to figure out how to use this                   Miguel
 Testing git pull
 git pull worked. Testing git push
+git push worked 
