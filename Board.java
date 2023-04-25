@@ -29,6 +29,11 @@ public class Board {
 
      // Create board as 2d array
      public int[][] createRandomBoard(int amntBombs){
+        int maxBombsPerRow = height/amntBombs+1;
+        int minBombsPerRow = maxBombsPerRow-2;
+        if(minBombsPerRow<0){
+         minBombsPerRow=0;
+        }
         int[][] newBoard = new int[height][width];
         // KEY
         // -1: Bomb 
@@ -36,22 +41,28 @@ public class Board {
         for(int r = 0; r<height; r++){ // Puts bombs on the board. 
             for(int c = 0; c<width;c++){
                if(amntBombs != 0){
-                  if((int)(Math.random()+1)==0){
+                  if((int)(Math.random()*21)==0){
+                     System.out.println("This works");
                      newBoard[r][c] = -1;
                      amntBombs--;
                   }
                }
             }
+            if(r==height-1&&amntBombs!=0){
+               r=0;
+            }
         }
         
-        for(int r = 0; r<height; r++){
+        for(int r = 0; r<height; r++){   // This updates the tile tickers for tiles near bombs
          for(int c= 0; c<width; c++){
             int num = newBoard[r][c];
             if(num ==  -1){
                for(int i = -1; i<=1;i++){
                   for(int j = -1; j<=1;j++){
-                     if(((r+i>=0&&c+j>=0)||(r+i<height&&c+j<width))&&newBoard[r+i][c+j]!=-1){   // BRUH LOOK!! CONFUSION!!!
-                        newBoard[r+i][c+j]++;
+                     if(((r+i>=0&&c+j>=0)&&(r+i<height&&c+j<width))){   // BRUH LOOK!! CONFUSION!!!
+                        if(newBoard[r+i][c+j]!=-1){
+                           newBoard[r+i][c+j]++;
+                        }
                      }
                   }
                }
