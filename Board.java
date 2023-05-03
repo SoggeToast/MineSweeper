@@ -4,7 +4,7 @@
 import java.util.Arrays;
 
 public class Board {
-    private int[][] board; 
+    private block[][] board; 
     private int width;
     private int height; 
 
@@ -28,13 +28,13 @@ public class Board {
      }
 
      // Create board as 2d array
-     public int[][] createRandomBoard(int amntBombs){
+     public block[][] createRandomBoard(int amntBombs){
         int maxBombsPerRow = height/amntBombs+1;
         int minBombsPerRow = maxBombsPerRow-2;
         if(minBombsPerRow<0){
          minBombsPerRow=0;
         }
-        int[][] newBoard = new int[height][width];
+        block[][] newBoard = new block[height][width];
         // KEY
         // -1: Bomb 
         // 0-9: Near-Bomb-Marker
@@ -43,7 +43,7 @@ public class Board {
                if(amntBombs != 0){
                   if((int)(Math.random()*21)==0){
                      System.out.println("This works");
-                     newBoard[r][c] = -1;
+                     newBoard[r][c] = new block(-1);
                      amntBombs--;
                   }
                }
@@ -76,7 +76,7 @@ public class Board {
      // Is automatically called with println() or print()
      public String toString(){
         String formattedBoard = "";
-        for(int[] arr:board){
+        for(block[] arr:board){
             formattedBoard += Arrays.toString(arr);
             formattedBoard += "\n";
         }
