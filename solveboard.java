@@ -3,16 +3,16 @@ import java.io.*;
 
 public class solveboard {
     private String useFile;
-    private block[][] board;
+    private Block[][] board;
     private boolean gameon = true;
 
     public solveboard(String f, int r, int c) throws IOException{
         useFile = f;
         Scanner in = new Scanner(new File(f));
-        board = new block[r][c];
+        board = new Block[r][c];
         for(int x = 0; x < board.length; x++){
             for(int y = 0; y < board[x].length; y++){
-                board[x][y] = new block(in.nextInt());
+                board[x][y] = new Block(in.nextInt());
             }
         }
     }
@@ -68,8 +68,8 @@ public class solveboard {
     }
 
     public void printBoard(){
-        for(block[] x : board){
-            for(block y : x){
+        for(Block[] x : board){
+            for(Block y : x){
                 System.out.print(y.getMines() + " ");
             }
             System.out.println();

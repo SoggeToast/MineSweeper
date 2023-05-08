@@ -1,0 +1,42 @@
+---public class Block---
+private int mines
+private int foundMines
+
+public Block(int n)
+public int getMines()
+public void setMines(int m)
+
+---public class Board---
+private int[][] board 
+private int width
+private int height
+private String[][] coverBoard
+
+public Board(int w, int h)
+public int getWidth()
+public int getHeight()
+public void setWidth(int w)
+public void setHeight(int h);
+public int[][] InitNewBoard(int amntBombs, int selectX, int selectY )
+public void exposeEmptySpace(int c, int r)
+public void printBoard()
+public String toString()
+
+---public class minesweeper---
+public static void main(String[] args)
+
+---public class solveboard---
+private String useFile
+private Block[][] board
+private boolean gameon = true
+
+public solveboard(String f, int r, int c)
+public void begin()
+public void flag()
+public void makeGuess()
+public void checkGuess()
+public void updateBoard()
+public void printBoard()
+
+---public class TestFile---
+public static void main(String[] args)
