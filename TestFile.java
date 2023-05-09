@@ -5,7 +5,7 @@ public class TestFile{                  // For all your Testing needs!!
         Board b = new Board(10,10);
         b.InitNewBoard(20, 4, 4);
         System.out.println(b);
-        b.exposeEmptySpace(4, 0);
+        b.uncoverEmptySpaces(5,5);
         b.printBoard();
         
     }

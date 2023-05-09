@@ -85,10 +85,23 @@ public class Board {
             if(((r+i>=0&&c+j>=0)&&(r+i<height&&c+j<width))){   // Makes sure we don't get out of bounds errors. 
                if(coverBoard[r+i][c+j].equals("#")){
                   if(board[r+i][c+j]!=-1){
+                     if(r+c==0||)
                      coverBoard[r+i][c+j] = board[r+i][c+j] + "";
                   }else{
                      coverBoard[r+i][c+j] = "B";
                   }
+               }
+            }
+         }
+      }
+     }
+     public void uncoverEmptySpaces(int r, int c){ // Uses recursion to uncover all empty spaces touching each other 
+      exposeEmptySpace(c, r);
+      for(int i = -1; i<=1;i++){
+         for(int j = -1; j<=1;j++){
+            if(((r+i>=0&&c+j>=0)&&(r+i<height&&c+j<width))){   // Makes sure we don't get out of bounds errors. 
+               if(board[r+i][c+j] == 0){
+                  uncoverEmptySpaces(r+i, c+j);
                }
             }
          }
