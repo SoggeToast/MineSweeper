@@ -85,9 +85,9 @@ public class Board {
             if(((r+i>=0&&c+j>=0)&&(r+i<height&&c+j<width))){   // Makes sure we don't get out of bounds errors. 
                if(coverBoard[r+i][c+j].equals("#")){
                   if(board[r+i][c+j]!=-1){
-                     if(r+c==0||)
+                     //if(r+c==0||board[r+i][c+j]!=0)
                      coverBoard[r+i][c+j] = board[r+i][c+j] + "";
-                  }else{
+                  }else if(board[r+i][c+j]==-1){
                      coverBoard[r+i][c+j] = "B";
                   }
                }
@@ -100,7 +100,9 @@ public class Board {
       for(int i = -1; i<=1;i++){
          for(int j = -1; j<=1;j++){
             if(((r+i>=0&&c+j>=0)&&(r+i<height&&c+j<width))){   // Makes sure we don't get out of bounds errors. 
-               if(board[r+i][c+j] == 0){
+               if(board[r+i][c+j] == 0){//&& coverBoard[r+i][c+j].equals("#")
+                  System.out.println(r+""+c);
+                  printBoard();
                   uncoverEmptySpaces(r+i, c+j);
                }
             }
