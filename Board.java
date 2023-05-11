@@ -4,6 +4,7 @@
 import java.util.Arrays;
 
 public class Board {
+   private final int[][] coords = {{-1,-1},{-1,0},{-1,1},{0,-1},{0,0},{0,1},{1,-1},{1,0},{1,1}};
     private int[][] board; 
     private int width;
     private int height; 
@@ -32,6 +33,9 @@ public class Board {
      public void setHeight(int h){
         height = h; 
      }
+     public int getValue(int c, int r){
+      return board[r][c];
+     }
 
      // Create board as 2d array
      public int[][] InitNewBoard(int amntBombs, int selectX, int selectY ){ // SelectX and selectY represent first guess.
@@ -47,7 +51,7 @@ public class Board {
         for(int r = 0; r<height; r++){ // Puts bombs on the board. 
             for(int c = 0; c<width;c++){
                if(amntBombs != 0){
-                  if(Math.abs((selectX-1)-c)>1&&Math.abs((selectY-1)-r)>1){  // This ensures there are no bombs placed on first click
+                  if(Math.abs((selectX)-c)>1&&Math.abs((selectY)-r)>1){  // This ensures there are no bombs placed on first click
                      if((int)(Math.random()*21)==0){     // Sets the chance for a bomb to be placed. Bigger the number the more sparse
                         newBoard[r][c] = -1;             // Set a bomb
                         amntBombs--;
@@ -79,34 +83,35 @@ public class Board {
         board = newBoard; 
         return newBoard;
      }
-     public void exposeEmptySpace(int c, int r ){ // Exposes all blocks around an empty space
-      for(int i = -1; i<=1;i++){
-         for(int j = -1; j<=1;j++){
-            if(((r+i>=0&&c+j>=0)&&(r+i<height&&c+j<width))){   // Makes sure we don't get out of bounds errors. 
-               if(coverBoard[r+i][c+j].equals("#")){
-                  if(board[r+i][c+j]!=-1){
-                     //if(r+c==0||board[r+i][c+j]!=0)
-                     coverBoard[r+i][c+j] = board[r+i][c+j] + "";
-                  }else if(board[r+i][c+j]==-1){
-                     coverBoard[r+i][c+j] = "B";
-                  }
-               }
-            }
-         }
+     public boolean flag(int r, int c){   // Flags a block on the coverboard 
+      if(coverBoard[r][c].equals("#")){
+         coverBoard[r][c] = "F";
+         return true;
+      }
+      return false; 
+     }
+     public boolean unFlag(int r, int c){  // Un flags a block if there is a flag in specfied position
+      if(coverBoard[r][c].equals("F")){
+         coverBoard[r][c]= "#";
+         return true;
+      }
+      return false; 
+     }
+
+     public void exposeSpace(int r, int c ){ // Exposes a block in specified position
+      if(coverBoard[r][c].equals("#")&&(board[r][c]!=0&&board[r][c]!=-1)){
+         coverBoard[r][c] = board[r][c] + "";
+      } else if(board[r][c]==0&&coverBoard[r][c].equals("#")){
+         coverBoard[r][c] = board[r][c]+"";
+         uncoverEmptySpaces(r, c);
+      } else if(board[r][c]==-1){
+         coverBoard[r][c] = "B";
       }
      }
-     public void uncoverEmptySpaces(int r, int c){ // Uses recursion to uncover all empty spaces touching each other 
-      exposeEmptySpace(c, r);
-      for(int i = -1; i<=1;i++){
-         for(int j = -1; j<=1;j++){
-            if(((r+i>=0&&c+j>=0)&&(r+i<height&&c+j<width))){   // Makes sure we don't get out of bounds errors. 
-               if(board[r+i][c+j] == 0){//&& coverBoard[r+i][c+j].equals("#")
-                  System.out.println(r+""+c);
-                  printBoard();
-                  uncoverEmptySpaces(r+i, c+j);
-               }
-            }
-         }
+     private void uncoverEmptySpaces(int r, int c){ // Uses recursion to uncover all empty spaces touching each other 
+      for(int[] rc: coords){
+         if(((r+rc[0]>=0&&c+rc[1]>=0)&&(r+rc[0]<height&&c+rc[1]<width)))
+         exposeSpace(r+rc[0],c+rc[1]);
       }
      }
      public void printBoard(){  // Prints the user board what's known as the cover board
