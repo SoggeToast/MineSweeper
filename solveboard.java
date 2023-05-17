@@ -3,18 +3,20 @@ import java.io.*;
 
 public class solveboard {
     private String useFile;
-    private Block[][] board;
+    //private Block[][] board;
     private boolean gameon = true;
 
     public solveboard(String f, int r, int c) throws IOException{
         useFile = f;
         Scanner in = new Scanner(new File(f));
+        /* 
         board = new Block[r][c];
         for(int x = 0; x < board.length; x++){
             for(int y = 0; y < board[x].length; y++){
                 board[x][y] = new Block(in.nextInt());
             }
         }
+        */
     }
 
     public void begin() throws IOException{

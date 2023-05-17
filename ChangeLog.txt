@@ -4,4 +4,4 @@
 - 3:00 - I need to ask you how we want to create a method
          See line 34 in the Board class                            Mason                     4/18/2023
 - 8:30 - Me trying to figure out how to use this                   Miguel                    4/18/2023
-- 7:50 am - Trying to sort files better                            Mason                     4/19/2023 hi
+- 7:50 am - Trying to sort files better                            Mason                     4/19/2023 
