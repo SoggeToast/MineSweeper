@@ -40,3 +40,11 @@ public void printBoard()
 
 ---public class TestFile---
 public static void main(String[] args)
+
+
+
+
+--- public class board ---
+This can be used to initalize a board provideed with the initial guess of the user
+This class stores the player and hidden board
+This class is used to guess, flag, unflag, 
