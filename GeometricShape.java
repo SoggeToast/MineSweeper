@@ -9,13 +9,7 @@ import java.awt.event.MouseEvent;
  
 class GeometricShape extends JPanel{
     private int width = 500;
-    private int length = 500;
-
-   public static void main(String args[]){
-        GeometricShape shape = new GeometricShape();
-        shape.MyPanel();
-   }
-       
+    private int length = 500;       
 
    public void MyPanel(){
         JFrame frame = new JFrame();
