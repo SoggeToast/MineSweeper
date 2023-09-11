@@ -23,7 +23,7 @@ class GeometricShape extends JPanel{
        frame.getContentPane().add(new GeometricShape());
        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        frame.setLocationRelativeTo(null);
-       frame.setSize(width,length);  
+       frame.setSize(width + 10,length + 40);  
        frame.setVisible(true);
 
        JLabel label = new JLabel();
@@ -60,6 +60,7 @@ class GeometricShape extends JPanel{
      private MouseListener listener = new MouseListener() {
         public void mouseClicked(MouseEvent e) {
             System.out.println(e);
+            
         }
 
         public void mousePressed(MouseEvent e) {
