@@ -14,8 +14,6 @@ public class TestFile{                  // For all your Testing needs!!
         int y = -1;
         x = input.nextInt();
         y = input.nextInt();
-        System.out.println(inS);
-        System.out.println(x + " , " + y);
         input.close();
         
         
@@ -25,7 +23,6 @@ public class TestFile{                  // For all your Testing needs!!
         while(true){
             System.out.print("Enter x and y coordinates as so (x y). If you want to flag enter (f):");
             inS = in.nextLine();
-            System.out.println(inS);
             input = new Scanner(inS);
             x = input.nextInt();
             y = input.nextInt(); 
