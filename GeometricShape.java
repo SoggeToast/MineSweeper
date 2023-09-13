@@ -10,13 +10,16 @@ import java.awt.event.MouseEvent;
 class GeometricShape extends JPanel{
     public int width;
     private static MouseEvent recentClick;
+
       
     public GeometricShape(int w){
         width = w*50;
+        this.setBounds(0,0,200,200);
     }
 
    public void MyPanel(){
         JFrame frame = new JFrame();
+        frame.setLayout(null);
         frame.addMouseListener(listener);
        frame.getContentPane().add(new GeometricShape(width));
        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
