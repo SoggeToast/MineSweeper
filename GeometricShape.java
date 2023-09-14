@@ -8,24 +8,32 @@ import java.awt.event.MouseEvent;
 
  
 class GeometricShape extends JPanel{
-    public int width;
+    public int w;
     private static MouseEvent recentClick;
+    private int previousGuess;
+    public static JFrame frame;
 
       
     public GeometricShape(int w){
-        width = w*50;
-        this.setBounds(0,0,200,200);
+        this.w = w*50;
+        System.out.println(this.w);
+        this.setBounds(0,0,this.w,this.w);
+    }
+
+    public void setpreviousguess(int n){
+        previousGuess = n;
     }
 
    public void MyPanel(){
-        JFrame frame = new JFrame();
+        frame = new JFrame();
         frame.setLayout(null);
         frame.addMouseListener(listener);
-       frame.getContentPane().add(new GeometricShape(width));
+       frame.getContentPane().add(new GeometricShape(w));
        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        frame.setLocationRelativeTo(null);
-       frame.setSize(width + 10, width + 45 + 100);  
+       frame.setSize(w + 10, w + 45 + 100);  
        frame.setVisible(true);
+       frame.setResizable(false);
    }
    
    public void paint(Graphics g) {
@@ -33,15 +41,15 @@ class GeometricShape extends JPanel{
         //g.setColor(Color.green);
         //g.fillRect(250, 250, 100, 50); 
         g.setColor(Color.darkGray);
-        g.fillRect(0, 0, WIDTH, 100);
+        g.fillRect(0, 0, w, 100);
         g.setColor(Color.orange);
         g.fillRect(100, 25, 50, 50);
         g.setColor(Color.red);
 
         g.fillRect(200, 25, 50, 50);
-        System.out.println(width);
-        for(int x = 0; x < width/50; x++){
-            for(int y = 0; y < width/50; y++){
+        System.out.println(w);
+        for(int x = 0; x < w/50; x++){
+            for(int y = 0; y < w/50; y++){
                 if(y%2!=0 && x%2 == 0 || x%2 !=0 && y%2==0){
                     Color lightGreen = new Color(170, 215, 81);
                     g.setColor(lightGreen);
@@ -49,7 +57,21 @@ class GeometricShape extends JPanel{
                     Color darkGreen = new Color(162, 209, 73);
                     g.setColor(darkGreen);
                 }
-                g.fillRect(x*50, y*50 + 100, 50, 50);
+                for(int j = 0; j < Board.coverBoard[0].length; j++){
+                    for(int k = 0; k < Board.coverBoard.length; k++){
+                        if(Board.coverBoard[j][k].equals("#")){
+                            g.fillRect(x*50, y*50 + 100, 50, 50);
+                        } else{
+                            if(y%2!=0 && x%2 == 0 || x%2 !=0 && y%2==0){
+                                Color lightBrown = new Color(229, 194, 159);
+                                g.setColor(lightBrown);
+                            } else{
+                                Color darkBrown = new Color(215, 184, 153);
+                                g.setColor(darkBrown);
+                            }
+                        }
+                    }
+                }
             }
         }
             
@@ -64,7 +86,7 @@ class GeometricShape extends JPanel{
 
      private MouseListener listener = new MouseListener() {
         public void mouseClicked(MouseEvent e) {
-            System.out.println(width);
+            System.out.println(w);
             System.out.println(e);
             recentClick = e;
             minesweeper.game.handleInput();

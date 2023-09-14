@@ -8,18 +8,21 @@ import java.io.IOException;
 
 public class minesweeper{
     public static minesweeper game = new minesweeper();
+    private static Board gameBoard;
+    private boolean FM = true;
+    private static GeometricShape shape;
 
     public static void main(String[] args) throws IOException{
         Scanner input = new Scanner(System.in);
-        //solveboard game = new solveboard("puzzel.dat", 8, 10);
-        //game.begin();
 
         System.out.print("How many squares wide do you want the board to be: ");
         int width = input.nextInt();
 
-        GeometricShape shape = new GeometricShape(width);
+        gameBoard = new Board(width, width);
+
+        shape = new GeometricShape(width);
         shape.MyPanel();
-        //shape.repaint();
+
 
     }
 
@@ -29,6 +32,18 @@ public class minesweeper{
         int y = GeometricShape.getyvalue();
         int col = (int)(x-10)/50;
         int row = (int)(y-130)/50;
+        if(FM == true){
+            gameBoard.InitNewBoard(row, col);
+            FM = false;
+        }else{
+            int guess = gameBoard.exposeSpace(row, col);
+            if(guess == 0){
+                shape.setpreviousguess(guess);
+                shape.frame.repaint();
+            }
+        }
+
         System.out.println(col + "        " + row);
+
     }
 }

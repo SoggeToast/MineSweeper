@@ -8,7 +8,7 @@ public class Board {
     private int[][] board; 
     private int width;
     private int height; 
-    private String[][] coverBoard; // This represents the board you see "#" denoting undiscovered spaces
+    public static String[][] coverBoard; // This represents the board you see "#" denoting undiscovered spaces
 
      public Board(int w, int h){
         width = w;
@@ -37,8 +37,20 @@ public class Board {
       return board[r][c];
      }
 
+     public boolean isFinished(){
+      for(int x = 0; x < coverBoard[0].length; x++){
+         for(int y = 0; y < coverBoard.length; y++){
+            if(coverBoard[x][y].equals("#")){
+               return true;
+            }
+         }
+      }
+      return false;
+     }
+
      // Create board as 2d array
-     public int[][] InitNewBoard(int amntBombs, int selectX, int selectY ){ // SelectX and selectY represent first guess.
+     public int[][] InitNewBoard(int selectX, int selectY ){ // SelectX and selectY represent first guess.
+         int amntBombs = (int)(width * height * 0.15) + 1;
         int maxBombsPerRow = height/amntBombs+1;
         int minBombsPerRow = maxBombsPerRow-2;
         if(minBombsPerRow<0){
@@ -98,14 +110,17 @@ public class Board {
       return false; 
      }
 
-     public void exposeSpace(int r, int c ){ // Exposes a block in specified position
+     public int exposeSpace(int r, int c ){ // Exposes a block in specified position  0 = not bomb, 1 = bomb
       if(coverBoard[r][c].equals("#")&&(board[r][c]!=0&&board[r][c]!=-1)){
          coverBoard[r][c] = board[r][c] + "";
+         return board[r][c];
       } else if(board[r][c]==0&&coverBoard[r][c].equals("#")){
          coverBoard[r][c] = board[r][c]+"";
          uncoverEmptySpaces(r, c);
-      } else if(board[r][c]==-1){
+         return 0;
+      } else{
          coverBoard[r][c] = "B";
+         return 1;
       }
      }
      private void uncoverEmptySpaces(int r, int c){ // Uses recursion to uncover all empty spaces touching each other 
