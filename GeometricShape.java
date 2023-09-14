@@ -58,10 +58,10 @@ class GeometricShape extends JPanel{
                     g.setColor(darkGreen);
                 }
                 if(Board.coverBoard[x][y].equals("#")){
-                    g.fillRect(x*50, y*50 + 100, 50, 50);
+                    g.fillRect(x*50, y*50+100, 50, 50);
                 } else if(Board.coverBoard[x][y].equals("B")){
                     g.setColor(Color.red);
-                    g.fillRect(x*50, y*50, 50, 50);
+                    g.fillRect(x*50, y*50+100, 50, 50);
                     g.setColor(Color.black);
                     g.drawString("B", x*50, y*50);
                 }
@@ -69,13 +69,13 @@ class GeometricShape extends JPanel{
                     if(y%2!=0 && x%2 == 0 || x%2 !=0 && y%2==0){
                         Color lightBrown = new Color(229, 194, 159);
                         g.setColor(lightBrown);
-                        g.fillRect(x*50, y*50 + 100, 50, 50);
+                        g.fillRect(x*50, y*50+100, 50, 50);
                         g.setColor(Color.black);
                         g.drawString(Board.coverBoard[x][y], x*50, y*50);
                     } else{
                         Color darkBrown = new Color(215, 184, 153);
                         g.setColor(darkBrown);
-                        g.fillRect(x*50, y*50 + 100, 50, 50);
+                        g.fillRect(x*50, y*50+100, 50, 50);
                         g.setColor(Color.black);
                         g.drawString(Board.coverBoard[x][y], x*50 +125, y*50 + 25);
 

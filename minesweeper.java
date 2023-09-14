@@ -24,14 +24,15 @@ public class minesweeper{
         shape.MyPanel();
 
 
+
     }
 
     public void handleInput(){
         //System.out.println(GeometricShape.getW());
         int x = GeometricShape.getxvalue();
         int y = GeometricShape.getyvalue();
-        int row = (int)(x-10)/50;
-        int col = (int)(y-130)/50;
+        int col = (int)(x-10)/50;
+        int row = (int)(y-130)/50;
         if(FM == true){
             gameBoard.InitNewBoard(row, col);
             FM = false;
@@ -42,9 +43,11 @@ public class minesweeper{
             }
         }
         shape.frame.getContentPane().repaint();
+        gameBoard.printBoard();
 
 
-        System.out.println(col + "        " + row);
+
+        System.out.println(row + "        " + col);
 
     }
 }
