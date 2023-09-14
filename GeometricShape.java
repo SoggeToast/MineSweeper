@@ -8,16 +8,16 @@ import java.awt.event.MouseEvent;
 
  
 class GeometricShape extends JPanel{
-    public int w;
+    public int w = 500;
     private static MouseEvent recentClick;
     private int previousGuess;
     public static JFrame frame;
 
       
     public GeometricShape(int w){
-        this.w = w*50;
+        //this.w = w*50;
         System.out.println(this.w);
-        this.setBounds(0,0,this.w,this.w);
+        this.setBounds(0,0,this.w,this.w+100);
     }
 
     public void setpreviousguess(int n){
@@ -57,19 +57,28 @@ class GeometricShape extends JPanel{
                     Color darkGreen = new Color(162, 209, 73);
                     g.setColor(darkGreen);
                 }
-                for(int j = 0; j < Board.coverBoard[0].length; j++){
-                    for(int k = 0; k < Board.coverBoard.length; k++){
-                        if(Board.coverBoard[j][k].equals("#")){
-                            g.fillRect(x*50, y*50 + 100, 50, 50);
-                        } else{
-                            if(y%2!=0 && x%2 == 0 || x%2 !=0 && y%2==0){
-                                Color lightBrown = new Color(229, 194, 159);
-                                g.setColor(lightBrown);
-                            } else{
-                                Color darkBrown = new Color(215, 184, 153);
-                                g.setColor(darkBrown);
-                            }
-                        }
+                if(Board.coverBoard[x][y].equals("#")){
+                    g.fillRect(x*50, y*50 + 100, 50, 50);
+                } else if(Board.coverBoard[x][y].equals("B")){
+                    g.setColor(Color.red);
+                    g.fillRect(x*50, y*50, 50, 50);
+                    g.setColor(Color.black);
+                    g.drawString("B", x*50, y*50);
+                }
+                else{
+                    if(y%2!=0 && x%2 == 0 || x%2 !=0 && y%2==0){
+                        Color lightBrown = new Color(229, 194, 159);
+                        g.setColor(lightBrown);
+                        g.fillRect(x*50, y*50 + 100, 50, 50);
+                        g.setColor(Color.black);
+                        g.drawString(Board.coverBoard[x][y], x*50, y*50);
+                    } else{
+                        Color darkBrown = new Color(215, 184, 153);
+                        g.setColor(darkBrown);
+                        g.fillRect(x*50, y*50 + 100, 50, 50);
+                        g.setColor(Color.black);
+                        g.drawString(Board.coverBoard[x][y], x*50 +125, y*50 + 25);
+
                     }
                 }
             }

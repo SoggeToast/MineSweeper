@@ -30,8 +30,8 @@ public class minesweeper{
         //System.out.println(GeometricShape.getW());
         int x = GeometricShape.getxvalue();
         int y = GeometricShape.getyvalue();
-        int col = (int)(x-10)/50;
-        int row = (int)(y-130)/50;
+        int row = (int)(x-10)/50;
+        int col = (int)(y-130)/50;
         if(FM == true){
             gameBoard.InitNewBoard(row, col);
             FM = false;
@@ -39,9 +39,10 @@ public class minesweeper{
             int guess = gameBoard.exposeSpace(row, col);
             if(guess == 0){
                 shape.setpreviousguess(guess);
-                shape.frame.repaint();
             }
         }
+        shape.frame.getContentPane().repaint();
+
 
         System.out.println(col + "        " + row);
 
