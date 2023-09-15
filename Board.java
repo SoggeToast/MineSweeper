@@ -110,17 +110,17 @@ public class Board {
       return false; 
      }
 
-     public int exposeSpace(int r, int c ){ // Exposes a block in specified position  0 = not bomb, 1 = bomb
+     public void exposeSpace(int r, int c ){ // Exposes a block in specified position  0 = not bomb, 1 = bomb
       if(coverBoard[r][c].equals("#")&&(board[r][c]!=0&&board[r][c]!=-1)){
          coverBoard[r][c] = board[r][c] + "";
-         return board[r][c];
+         //return board[r][c];
       } else if(board[r][c]==0&&coverBoard[r][c].equals("#")){
-         coverBoard[r][c] = board[r][c]+"";
+         coverBoard[r][c] = "0";
          uncoverEmptySpaces(r, c);
-         return 0;
-      } else{
+         //return 0;
+      } else if(board[r][c] == -1){
          coverBoard[r][c] = "B";
-         return 1;
+         //return 1;
       }
      }
      private void uncoverEmptySpaces(int r, int c){ // Uses recursion to uncover all empty spaces touching each other 

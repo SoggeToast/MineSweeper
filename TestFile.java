@@ -17,7 +17,7 @@ public class TestFile{                  // For all your Testing needs!!
         input.close();
         
         
-        b.InitNewBoard(20, x-1, y-1);
+        b.InitNewBoard(x-1, y-1);
         b.exposeSpace(y, x);
         b.printBoard();
         while(true){
@@ -28,6 +28,7 @@ public class TestFile{                  // For all your Testing needs!!
             y = input.nextInt(); 
             b.exposeSpace(y-1,x-1);
             b.printBoard();
+            System.out.println(b);
             input.close();
         }
         
