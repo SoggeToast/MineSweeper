@@ -20,6 +20,10 @@ class GeometricShape extends JPanel{
         this.setBounds(0,0,this.w,this.w+100);
     }
 
+    public void setW(int w){
+        this.w = w*50;
+    }
+
     public void setpreviousguess(int n){
         previousGuess = n;
     }
@@ -57,31 +61,35 @@ class GeometricShape extends JPanel{
                     Color darkGreen = new Color(162, 209, 73);
                     g.setColor(darkGreen);
                 }
-                if(Board.coverBoard[y][x].equals("#")){
+                if(minesweeper.FM){
                     g.fillRect(x*50, y*50+100, 50, 50);
-                } else if(!Board.coverBoard[y][x].equals("B") && !Board.coverBoard[y][x].equals("F") && Integer.parseInt(Board.coverBoard[y][x]) >= 0){
-                    if(y%2!=0 && x%2 == 0 || x%2 !=0 && y%2==0){
-                        Color lightBrown = new Color(229, 194, 159);
-                        g.setColor(lightBrown);
+                } else{
+                    if(Board.coverBoard[y][x].equals("#")){
                         g.fillRect(x*50, y*50+100, 50, 50);
-                        g.setColor(Color.black);
-                        g.drawString(Board.coverBoard[y][x], x*50 +25, y*50 + 125);
-                    } else{
-                        Color darkBrown = new Color(215, 184, 153);
-                        g.setColor(darkBrown);
-                        g.fillRect(x*50, y*50+100, 50, 50);
-                        g.setColor(Color.black);
-                        g.drawString(Board.coverBoard[y][x], x*50 +25, y*50 + 125);
+                    } else if(!Board.coverBoard[y][x].equals("B") && !Board.coverBoard[y][x].equals("F") && Integer.parseInt(Board.coverBoard[y][x]) >= 0){
+                        if(y%2!=0 && x%2 == 0 || x%2 !=0 && y%2==0){
+                            Color lightBrown = new Color(229, 194, 159);
+                            g.setColor(lightBrown);
+                            g.fillRect(x*50, y*50+100, 50, 50);
+                            g.setColor(Color.black);
+                            g.drawString(Board.coverBoard[y][x], x*50 +25, y*50 + 125);
+                        } else{
+                            Color darkBrown = new Color(215, 184, 153);
+                            g.setColor(darkBrown);
+                            g.fillRect(x*50, y*50+100, 50, 50);
+                            g.setColor(Color.black);
+                            g.drawString(Board.coverBoard[y][x], x*50 +25, y*50 + 125);
 
-                    }
-                } else if(Board.coverBoard[y][x].equals("F")){
-                    g.setColor(Color.orange);
+                        }
+                    } else if(Board.coverBoard[y][x].equals("F")){
+                        g.setColor(Color.orange);
+                        g.fillRect(x*50, y*50+100, 50, 50);
+                    }else{
+                    g.setColor(Color.red);
                     g.fillRect(x*50, y*50+100, 50, 50);
-                }else{
-                g.setColor(Color.red);
-                g.fillRect(x*50, y*50+100, 50, 50);
-                g.setColor(Color.black);
-                g.drawString("B", x*50 +25, y*50+125);
+                    g.setColor(Color.black);
+                    g.drawString("B", x*50 +25, y*50+125);
+                    }
                 }
             }
         }

@@ -8,7 +8,7 @@ import java.io.IOException;
 public class minesweeper{
     public static minesweeper game = new minesweeper();
     private static Board gameBoard;
-    private boolean FM = true;
+    public static boolean FM = true;
     private static GeometricShape shape;
     public static boolean flagMode = false;
 
@@ -22,6 +22,7 @@ public class minesweeper{
         gameBoard = new Board(width, width);
 
         shape = new GeometricShape(width);
+        shape.setW(width);
         shape.MyPanel();
 
 
