@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 
  
 class GeometricShape extends JPanel{
+    private static boolean widthAlreadySet = false;
     public int w = 500;
     private static MouseEvent recentClick;
     private int previousGuess;
@@ -15,7 +16,10 @@ class GeometricShape extends JPanel{
 
       
     public GeometricShape(int w){
-        //this.w = w*50;
+        if(!widthAlreadySet){
+            this.w = w*50; 
+            widthAlreadySet = true;
+        } 
         System.out.println(this.w);
         this.setBounds(0,0,this.w,this.w+100);
     }
